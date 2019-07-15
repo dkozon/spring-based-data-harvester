@@ -9,8 +9,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class ConsoleApplication {
     public static void main(String[] args) throws IOException {
@@ -27,10 +30,12 @@ public class ConsoleApplication {
 
         DataFromSource dataFromSource = new DataFromSource(webDataProvider.extractSourceName(), map);
 
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+
         DataPresentationOnXMLService dataPresentationOnXMLService = context.getBean(DataPresentationOnXMLService.class);
-        dataPresentationOnXMLService.presentDataBy("wynik_XML.xml", dataFromSource);
+        dataPresentationOnXMLService.presentDataBy("wynik_" + UUID.randomUUID() + ".xml", dataFromSource);
 
         DataPresentationOnJSONService dataPresentationOnJSONService = context.getBean(DataPresentationOnJSONService.class);
-        dataPresentationOnJSONService.presentDataBy("wynik_JSON.json", dataFromSource);
+        dataPresentationOnJSONService.presentDataBy("wynik_" + UUID.randomUUID() + ".json", dataFromSource);
     }
 }
