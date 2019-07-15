@@ -28,9 +28,9 @@ public class ConsoleApplication {
         DataFromSource dataFromSource = new DataFromSource(webDataProvider.extractSourceName(), map);
 
         DataPresentationOnXMLService dataPresentationOnXMLService = context.getBean(DataPresentationOnXMLService.class);
-        dataPresentationOnXMLService.presentDataBy("wynik.xml", dataFromSource);
+        dataPresentationOnXMLService.presentDataBy("wynik_XML.xml", dataFromSource);
 
         DataPresentationOnJSONService dataPresentationOnJSONService = context.getBean(DataPresentationOnJSONService.class);
-        dataPresentationOnJSONService.presentDataBy("wynikXXX.json", dataFromSource);
+        dataPresentationOnJSONService.presentDataBy("wynik_JSON.json", dataFromSource);
     }
 }

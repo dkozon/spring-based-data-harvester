@@ -37,3 +37,5 @@ modules.xml
 
 # Log
 logfile.log*
+*.xml
+*.json
