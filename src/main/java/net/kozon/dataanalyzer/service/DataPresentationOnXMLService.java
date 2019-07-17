@@ -1,7 +1,6 @@
 package net.kozon.dataanalyzer.service;
 
 import lombok.extern.slf4j.Slf4j;
-import net.kozon.dataanalyzer.interfaces.DataProvider;
 import net.kozon.dataanalyzer.pojo.DataFromSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

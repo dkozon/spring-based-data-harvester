@@ -1,9 +1,7 @@
 package net.kozon.dataanalyzer.service;
 
 import lombok.extern.slf4j.Slf4j;
-import net.kozon.dataanalyzer.interfaces.DataProvider;
 import net.kozon.dataanalyzer.pojo.DataFromSource;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.io.FileWriter;

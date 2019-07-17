@@ -15,15 +15,15 @@ public class Configuration {
     public String source;
     public List<String> regexes;
 
+    private Configuration() {
+    }
+
     public static Configuration getInstance() throws IOException {
         Path path = Paths.get("src\\main\\resources\\harvesterConfig.json");
         BufferedReader bufferedReader = Files.newBufferedReader(path);
         JsonReader jsonReader = new JsonReader(bufferedReader);
         Gson gson = new Gson();
         return gson.fromJson(jsonReader, Configuration.class);
-    }
-
-    private Configuration() {
     }
 
 }
