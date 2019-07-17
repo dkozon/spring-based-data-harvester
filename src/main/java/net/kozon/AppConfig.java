@@ -4,6 +4,7 @@ import net.kozon.dataanalyzer.impl.WebDataProvider;
 import net.kozon.dataanalyzer.service.DataPresentationOnConsoleService;
 import net.kozon.dataanalyzer.service.DataPresentationOnJSONService;
 import net.kozon.dataanalyzer.service.DataPresentationOnXMLService;
+import net.kozon.dataanalyzer.service.DataPresentationServiceExploitable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,17 +20,22 @@ public class AppConfig {
 
     @Bean
     public DataPresentationOnConsoleService dataPresentationOnConsoleService() throws IOException {
-        return new DataPresentationOnConsoleService(webDataProvider());
+        return new DataPresentationOnConsoleService();
     }
 
     @Bean
     public DataPresentationOnXMLService dataPresentationOnXMLService() throws IOException {
-        return new DataPresentationOnXMLService(webDataProvider());
+        return new DataPresentationOnXMLService();
     }
 
     @Bean
     public DataPresentationOnJSONService dataPresentationOnJSONService() throws IOException {
-        return new DataPresentationOnJSONService(webDataProvider());
+        return new DataPresentationOnJSONService();
+    }
+
+    @Bean
+    public DataPresentationServiceExploitable dataPresentationServiceExploitable() throws IOException {
+        return new DataPresentationServiceExploitable();
     }
 
 }

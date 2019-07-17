@@ -2,24 +2,18 @@ package net.kozon.dataanalyzer.service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.kozon.dataanalyzer.interfaces.DataProvider;
+import net.kozon.dataanalyzer.pojo.DataFromSource;
 
 import java.io.IOException;
+import java.util.Map;
 
 @Slf4j
 public class DataPresentationOnConsoleService {
 
-    private DataProvider dataProvider;
-
-    public DataPresentationOnConsoleService(DataProvider dataProvider) throws IOException {
-        this.dataProvider = dataProvider;
-    }
-
-    public void presentAllDataFromSource() throws IOException {
-        this.dataProvider.getDocument();
-        log.info(dataProvider.getDocument().toString());
-    }
-
-    public void presentDataBy(String selector, String element) throws IOException {
-        log.info(dataProvider.extractDetailedData(selector, element));
+    public void presentDataBy(DataFromSource dataFromSource) {
+        for (Map.Entry entry : dataFromSource.getElements().entrySet()) {
+            log.info(dataFromSource.getSourceName() + " " + entry.getKey().toString());
+            log.info(dataFromSource.getSourceName() + " " + entry.getValue().toString());
+        }
     }
 }

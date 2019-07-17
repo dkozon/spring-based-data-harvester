@@ -13,29 +13,24 @@ import java.util.Map;
 @Slf4j
 public class DataPresentationOnJSONService {
 
-    private DataProvider dataProvider;
-
-    public DataPresentationOnJSONService(DataProvider dataProvider) throws IOException {
-        this.dataProvider = dataProvider;
+    public void presentDataBy(DataFromSource dataFromSource, String outputFile) throws IOException {
+        saveToXML(dataFromSource, outputFile);
     }
 
-    public void presentDataBy(String outputFile, DataFromSource dataFromSource) throws IOException {
-        saveToXML(outputFile, dataFromSource);
-    }
-
-    private void saveToXML(String outputFile, DataFromSource dataFromSource) throws IOException {
-        JSONObject obj = new JSONObject();
-        JSONArray element = new JSONArray();
-        obj.put("page", dataFromSource.getSourceName());
+    private void saveToXML(DataFromSource dataFromSource, String outputFile) throws IOException {
+        JSONObject root = new JSONObject();
+        root.put("page", dataFromSource.getSourceName());
+        JSONObject element = new JSONObject();
         for (Map.Entry entry : dataFromSource.getElements().entrySet()) {
-            element.add(entry.getValue().toString());
-            obj.put(entry.getKey(), element);
+            element.put("element", entry.getKey());
+            element.put("value", entry.getValue());
         }
+        root.put("source", element);
 
         try (FileWriter file = new FileWriter(outputFile)) {
-            file.write(obj.toJSONString());
+            file.write(root.toJSONString());
             log.info("Successfully Copied JSON Object to File...");
-            log.info("JSON Object: " + obj);
+            log.info("JSON Object: " + root);
         }
     }
 

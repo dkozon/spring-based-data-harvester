@@ -22,17 +22,11 @@ import java.util.Map;
 @Slf4j
 public class DataPresentationOnXMLService {
 
-    private DataProvider dataProvider;
-
-    public DataPresentationOnXMLService(DataProvider dataProvider) throws IOException {
-        this.dataProvider = dataProvider;
+    public void presentDataBy(DataFromSource dataFromSource, String outputFile) {
+        saveToXML(dataFromSource, outputFile);
     }
 
-    public void presentDataBy(String outputFile, DataFromSource dataFromSource) {
-        saveToXML(outputFile, dataFromSource);
-    }
-
-    private void saveToXML(String outputFile, DataFromSource dataFromSource) {
+    private void saveToXML(DataFromSource dataFromSource, String outputFile) {
         Document document;
         Element element;
 
