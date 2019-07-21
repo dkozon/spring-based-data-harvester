@@ -16,7 +16,15 @@ public class DataFromSource {
         return sourceName;
     }
 
+    public void setSourceName(String sourceName) {
+        this.sourceName = sourceName;
+    }
+
     public List<String> getSelectors() {
         return selectors;
+    }
+
+    public void setSelectors(List<String> selectors) {
+        this.selectors = selectors;
     }
 }

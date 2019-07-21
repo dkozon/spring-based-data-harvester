@@ -5,6 +5,7 @@ import net.kozon.dataanalyzer.interfaces.DataProvider;
 import net.kozon.helpers.Configuration;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -45,6 +46,7 @@ public class WebDataProvider implements DataProvider {
         return name;
     }
 
+    @Override
     public List<String> prepareListFromData() throws IOException {
         List<String> list = new ArrayList<>();
         for (String selector : Configuration.getInstance().selectors) {
