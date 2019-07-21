@@ -49,8 +49,8 @@ public class WebDataProviderTest {
     public void extractDetailedData() throws IOException {
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
-        log.info(webDataProvider.extractDetailedData("p:nth-child(1)", "Złoto"));
-        assertThat(webDataProvider.extractDetailedData("p:nth-child(1)", "Złoto")).contains("Złoto 5398.38 PLN / UNCJA");
+        log.info(webDataProvider.extractDetailedData("p:nth-child(1)"));
+        assertThat(webDataProvider.extractDetailedData("p:nth-child(1)")).contains("Złoto 5398.38 PLN / UNCJA");
     }
 
     @Test

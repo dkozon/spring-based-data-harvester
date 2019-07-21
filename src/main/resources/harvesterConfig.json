@@ -1,6 +1,6 @@
 {
   "source": "http://www.79element.pl",
-  "regexes": [
+  "selectors": [
     "#spot_block_left > div:nth-child(2) > p:nth-child(1)"
   ]
 }

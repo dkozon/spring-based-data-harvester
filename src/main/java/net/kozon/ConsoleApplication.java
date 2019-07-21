@@ -11,8 +11,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class ConsoleApplication {
@@ -22,12 +20,7 @@ public class ConsoleApplication {
         WebDataProvider webDataProvider = context.getBean(WebDataProvider.class);
         webDataProvider.setUrl(Configuration.getInstance().source);
 
-        Map<String, String> map = new HashMap<>();
-        for (String regex : Configuration.getInstance().regexes) {
-            map.put("zloto", webDataProvider.extractDetailedData(regex, "Złoto"));
-        }
-
-        DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), map);
+        DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), webDataProvider.prepareListFromData());
 
         DataPresentationOnConsoleService dataPresentationOnConsoleService = context.getBean(DataPresentationOnConsoleService.class);
         dataPresentationOnConsoleService.presentDataBy(dataFromSource);

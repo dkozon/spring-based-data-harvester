@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -17,11 +18,10 @@ public class DataPresentationOnJSONService {
 
     private void saveToXML(DataFromSource dataFromSource, String outputFile) throws IOException {
         JSONObject root = new JSONObject();
-        root.put("page", dataFromSource.getElements());
+        root.put("page", dataFromSource.getSourceName());
         JSONObject element = new JSONObject();
-        for (Map.Entry entry : dataFromSource.getElements().entrySet()) {
-            element.put("element", entry.getKey());
-            element.put("value", entry.getValue());
+        for (String selector : dataFromSource.getSelectors()) {
+            element.put("element", selector);
         }
         root.put("source", element);
 

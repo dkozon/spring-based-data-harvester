@@ -13,7 +13,7 @@ import java.util.List;
 public class Configuration {
 
     public String source;
-    public List<String> regexes;
+    public List<String> selectors;
 
     private Configuration() {
     }

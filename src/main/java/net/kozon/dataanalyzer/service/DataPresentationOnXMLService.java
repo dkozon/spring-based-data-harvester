@@ -37,9 +37,9 @@ public class DataPresentationOnXMLService {
             log.info(dataFromSource.getSourceName());
             Element rootEle = document.createElement(dataFromSource.getSourceName());
 
-            for (Map.Entry entry : dataFromSource.getElements().entrySet()) {
-                element = document.createElement(entry.getKey().toString());
-                element.appendChild(document.createTextNode(entry.getValue().toString()));
+            for (String entry : dataFromSource.getSelectors()) {
+                element = document.createElement("entity");
+                element.appendChild(document.createTextNode(entry));
                 rootEle.appendChild(element);
             }
 

@@ -1,6 +1,7 @@
 package net.kozon;
 
 import net.kozon.dataanalyzer.impl.WebDataProvider;
+import net.kozon.dataanalyzer.pojo.DataFromSource;
 import net.kozon.dataanalyzer.service.DataPresentationOnConsoleService;
 import net.kozon.dataanalyzer.service.DataPresentationOnJSONService;
 import net.kozon.dataanalyzer.service.DataPresentationOnXMLService;
@@ -19,22 +20,22 @@ public class AppConfig {
     }
 
     @Bean
-    public DataPresentationOnConsoleService dataPresentationOnConsoleService() throws IOException {
+    public DataPresentationOnConsoleService dataPresentationOnConsoleService() {
         return new DataPresentationOnConsoleService();
     }
 
     @Bean
-    public DataPresentationOnXMLService dataPresentationOnXMLService() throws IOException {
+    public DataPresentationOnXMLService dataPresentationOnXMLService() {
         return new DataPresentationOnXMLService();
     }
 
     @Bean
-    public DataPresentationOnJSONService dataPresentationOnJSONService() throws IOException {
+    public DataPresentationOnJSONService dataPresentationOnJSONService() {
         return new DataPresentationOnJSONService();
     }
 
     @Bean
-    public DataPresentationServiceExploitable dataPresentationServiceExploitable() throws IOException {
+    public DataPresentationServiceExploitable dataPresentationServiceExploitable() {
         return new DataPresentationServiceExploitable();
     }
 

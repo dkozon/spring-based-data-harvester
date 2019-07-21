@@ -7,7 +7,7 @@ import java.io.IOException;
 public interface DataProvider {
     Document getDocument() throws IOException;
 
-    String extractDetailedData(String selector, String element) throws IOException;
+    String extractDetailedData(String selector) throws IOException;
 
     String prepareSourceName();
 }
