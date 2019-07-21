@@ -7,7 +7,6 @@ import net.kozon.dataanalyzer.service.DataPresentationOnJSONService;
 import net.kozon.dataanalyzer.service.DataPresentationOnXMLService;
 import net.kozon.dataanalyzer.service.DataPresentationServiceExploitable;
 import net.kozon.helpers.Configuration;
-import net.kozon.helpers.HarvesterConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

@@ -1,4 +1,4 @@
-package net.kozon.helpers;
+package net.kozon;
 
 import net.kozon.dataanalyzer.impl.WebDataProvider;
 import net.kozon.dataanalyzer.interfaces.DataProvider;
