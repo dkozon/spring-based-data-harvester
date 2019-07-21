@@ -23,6 +23,7 @@ public class WebDataProviderTest {
 
     @BeforeClass
     public static void setUp() {
+        // given
         service.stubFor(get(urlEqualTo("/endpoint"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "text/plain")
@@ -30,32 +31,40 @@ public class WebDataProviderTest {
     }
 
     @Test
-    public void setUrl() throws IOException {
+    public void setUrl() {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
+        // then
         assertThat(webDataProvider.getUrl()).isEqualTo(TEST_URL);
     }
 
     @Test
     public void getDocument() throws IOException {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
+        // then
         log.info(webDataProvider.getDocument().outerHtml());
         assertThat(webDataProvider.getDocument().outerHtml().contains("Złoto 5398.38 PLN"));
     }
 
     @Test
     public void extractDetailedData() throws IOException {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
+        // then
         log.info(webDataProvider.extractDetailedData("p:nth-child(1)"));
         assertThat(webDataProvider.extractDetailedData("p:nth-child(1)")).contains("Złoto 5398.38 PLN / UNCJA");
     }
 
     @Test
-    public void extractSourceName() throws IOException {
+    public void extractSourceName() {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
+        //then
         log.info(webDataProvider.prepareSourceName());
         assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost8100endpoint");
     }

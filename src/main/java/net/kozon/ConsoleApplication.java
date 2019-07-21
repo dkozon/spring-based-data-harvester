@@ -23,15 +23,15 @@ public class ConsoleApplication {
         DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), webDataProvider.prepareListFromData());
 
         DataPresentationOnConsoleService dataPresentationOnConsoleService = context.getBean(DataPresentationOnConsoleService.class);
-        dataPresentationOnConsoleService.presentDataBy(dataFromSource, UUID.randomUUID() + ".txt");
+        dataPresentationOnConsoleService.saveToFile(dataFromSource, UUID.randomUUID() + ".txt");
 
         DataPresentationOnXMLService dataPresentationOnXMLService = context.getBean(DataPresentationOnXMLService.class);
-        dataPresentationOnXMLService.presentDataBy(dataFromSource, UUID.randomUUID() + ".xml");
+        dataPresentationOnXMLService.saveToFile(dataFromSource, UUID.randomUUID() + ".xml");
 
         DataPresentationOnJSONService dataPresentationOnJSONService = context.getBean(DataPresentationOnJSONService.class);
-        dataPresentationOnJSONService.presentDataBy(dataFromSource, UUID.randomUUID() + ".json");
+        dataPresentationOnJSONService.saveToFile(dataFromSource, UUID.randomUUID() + ".json");
 
         DataPresentationServiceExploitable dataPresentationServiceExploitable = context.getBean(DataPresentationServiceExploitable.class);
-        dataPresentationServiceExploitable.presentDataBy(dataFromSource, "exploitResult.xml");
+        dataPresentationServiceExploitable.saveToFile(dataFromSource, "exploitResult.xml");
     }
 }

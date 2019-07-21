@@ -15,15 +15,12 @@ import java.util.List;
 @Component
 public class WebDataProvider implements DataProvider {
 
-    private String url;
-
-    private Document document;
-
     public String getUrl() {
         return url;
     }
+    private String url;
 
-    public void setUrl(String url) throws IOException {
+    public void setUrl(String url) {
         this.url = url;
     }
 
@@ -55,8 +52,8 @@ public class WebDataProvider implements DataProvider {
     }
 
     private Document harvestRawData() throws IOException {
-        this.document = Jsoup.connect(url).get();
-        log.info(this.document.title());
-        return this.document;
+        Document document = Jsoup.connect(url).get();
+        log.info(document.title());
+        return document;
     }
 }

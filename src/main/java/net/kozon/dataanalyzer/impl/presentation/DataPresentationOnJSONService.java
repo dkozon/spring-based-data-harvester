@@ -12,12 +12,7 @@ import java.io.IOException;
 public class DataPresentationOnJSONService implements DataPresentation {
 
     @Override
-    public void presentDataBy(DataFromSource dataFromSource, String outputFile) throws IOException {
-        saveToFile(dataFromSource, outputFile);
-    }
-
-    @Override
-    public void saveToFile(DataFromSource dataFromSource, String outputFile) throws IOException {
+    public boolean saveToFile(DataFromSource dataFromSource, String outputFile) {
         JSONObject root = new JSONObject();
         root.put("page", dataFromSource.getSourceName());
         JSONObject element = new JSONObject();
@@ -30,7 +25,11 @@ public class DataPresentationOnJSONService implements DataPresentation {
             file.write(root.toJSONString());
             log.info("Successfully Copied JSON Object to File...");
             log.info("JSON Object: " + root);
+        } catch (IOException e) {
+            log.error("Wrong output file. Problem with saving data. Log: %s", e);
+            return false;
         }
+        return true;
     }
 
 }

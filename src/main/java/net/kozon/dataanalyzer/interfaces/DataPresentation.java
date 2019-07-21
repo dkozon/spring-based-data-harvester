@@ -6,8 +6,6 @@ import java.io.IOException;
 
 public interface DataPresentation {
 
-    void presentDataBy(DataFromSource dataFromSource, String outputFile) throws IOException;
-
-    void saveToFile(DataFromSource dataFromSource, String outputFile) throws IOException;
+    boolean saveToFile(DataFromSource dataFromSource, String outputFile) throws IOException;
 
 }

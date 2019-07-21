@@ -22,12 +22,7 @@ import java.io.IOException;
 public class DataPresentationOnXMLService implements DataPresentation {
 
     @Override
-    public void presentDataBy(DataFromSource dataFromSource, String outputFile) {
-        saveToFile(dataFromSource, outputFile);
-    }
-
-    @Override
-    public void saveToFile(DataFromSource dataFromSource, String outputFile) {
+    public boolean saveToFile(DataFromSource dataFromSource, String outputFile) {
         Document document;
         Element element;
 
@@ -54,13 +49,15 @@ public class DataPresentationOnXMLService implements DataPresentation {
                 transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
                 transformer.transform(new DOMSource(document), new StreamResult(new FileOutputStream(outputFile)));
-
             } catch (TransformerException | IOException exception) {
                 log.info(exception.getMessage());
+                return false;
             }
         } catch (ParserConfigurationException exception) {
-            log.info("UsersXML: Error trying to instantiate DocumentBuilder " + exception);
+            log.info("UsersXML: Error trying to instantiate DocumentBuilder.\n Log: %s", exception);
+            return false;
         }
+        return true;
     }
 
 }
