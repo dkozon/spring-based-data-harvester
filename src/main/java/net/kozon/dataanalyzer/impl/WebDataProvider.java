@@ -11,10 +11,15 @@ import java.io.IOException;
 public class WebDataProvider implements DataProvider {
 
     private String url;
+
     private Document document;
 
     public void setUrl(String url) throws IOException {
         this.url = url;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     @Override
@@ -28,8 +33,8 @@ public class WebDataProvider implements DataProvider {
     }
 
     @Override
-    public String extractSourceName() throws IOException {
-        String name = this.url.replaceAll("https://|http://", "page_").replace("/", "");
+    public String prepareSourceName() {
+        String name = this.url.replaceAll("https://|http://", "page_").replace("/", "").replace(":", "");
         log.debug(name);
         return name;
     }

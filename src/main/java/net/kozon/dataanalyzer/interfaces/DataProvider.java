@@ -9,5 +9,5 @@ public interface DataProvider {
 
     String extractDetailedData(String selector, String element) throws IOException;
 
-    String extractSourceName() throws IOException;
+    String prepareSourceName();
 }

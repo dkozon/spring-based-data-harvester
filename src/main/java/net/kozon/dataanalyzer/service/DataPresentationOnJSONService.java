@@ -17,7 +17,7 @@ public class DataPresentationOnJSONService {
 
     private void saveToXML(DataFromSource dataFromSource, String outputFile) throws IOException {
         JSONObject root = new JSONObject();
-        root.put("page", dataFromSource.getSourceName());
+        root.put("page", dataFromSource.getElements());
         JSONObject element = new JSONObject();
         for (Map.Entry entry : dataFromSource.getElements().entrySet()) {
             element.put("element", entry.getKey());

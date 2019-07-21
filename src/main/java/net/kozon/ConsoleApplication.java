@@ -27,7 +27,7 @@ public class ConsoleApplication {
             map.put("zloto", webDataProvider.extractDetailedData(regex, "Złoto"));
         }
 
-        DataFromSource dataFromSource = new DataFromSource(webDataProvider.extractSourceName(), map);
+        DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), map);
 
         DataPresentationOnConsoleService dataPresentationOnConsoleService = context.getBean(DataPresentationOnConsoleService.class);
         dataPresentationOnConsoleService.presentDataBy(dataFromSource);
