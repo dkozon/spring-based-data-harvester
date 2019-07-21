@@ -6,8 +6,6 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 public class DataPresentationOnJSONService {

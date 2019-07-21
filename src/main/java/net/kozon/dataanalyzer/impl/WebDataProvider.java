@@ -5,14 +5,11 @@ import net.kozon.dataanalyzer.interfaces.DataProvider;
 import net.kozon.helpers.Configuration;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Component
@@ -22,12 +19,12 @@ public class WebDataProvider implements DataProvider {
 
     private Document document;
 
-    public void setUrl(String url) throws IOException {
-        this.url = url;
-    }
-
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) throws IOException {
+        this.url = url;
     }
 
     @Override
