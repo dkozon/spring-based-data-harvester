@@ -5,7 +5,6 @@ import net.kozon.dataanalyzer.interfaces.DataProvider;
 import net.kozon.helpers.Configuration;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
