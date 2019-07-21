@@ -34,6 +34,7 @@ public class DataPresentationOnXMLServiceTest {
     }
     @Test
     public void saveToFile() throws IOException {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
         DataPresentationOnXMLService dataPresentationOnConsoleService = new DataPresentationOnXMLService();
@@ -43,8 +44,8 @@ public class DataPresentationOnXMLServiceTest {
 
         DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), list);
 
+        // then
         assertThat(webDataProvider.getUrl()).isEqualTo(TEST_URL);
-
         assertThat(dataPresentationOnConsoleService.saveToFile(dataFromSource, "test.xml")).isTrue();
     }
 }

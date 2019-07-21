@@ -34,6 +34,7 @@ public class DataPresentationOnConsoleServiceTest {
 
     @Test
     public void saveToFile() throws IOException {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
         DataPresentationOnConsoleService dataPresentationOnConsoleService = new DataPresentationOnConsoleService();
@@ -43,8 +44,8 @@ public class DataPresentationOnConsoleServiceTest {
 
         DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), list);
 
+        // then
         assertThat(webDataProvider.getUrl()).isEqualTo(TEST_URL);
-
         assertThat(dataPresentationOnConsoleService.saveToFile(dataFromSource, "test.txt")).isTrue();
     }
 }
