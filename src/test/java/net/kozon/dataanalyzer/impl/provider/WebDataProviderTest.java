@@ -1,4 +1,4 @@
-package net.kozon.dataanalyzer.impl;
+package net.kozon.dataanalyzer.impl.provider;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import lombok.extern.slf4j.Slf4j;

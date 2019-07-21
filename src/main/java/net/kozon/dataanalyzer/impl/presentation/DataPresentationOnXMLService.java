@@ -1,6 +1,7 @@
-package net.kozon.dataanalyzer.service;
+package net.kozon.dataanalyzer.impl.presentation;
 
 import lombok.extern.slf4j.Slf4j;
+import net.kozon.dataanalyzer.interfaces.DataPresentation;
 import net.kozon.dataanalyzer.pojo.DataFromSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,13 +19,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 @Slf4j
-public class DataPresentationOnXMLService {
+public class DataPresentationOnXMLService implements DataPresentation {
 
     public void presentDataBy(DataFromSource dataFromSource, String outputFile) {
-        saveToXML(dataFromSource, outputFile);
+        saveToFile(dataFromSource, outputFile);
     }
 
-    private void saveToXML(DataFromSource dataFromSource, String outputFile) {
+    public void saveToFile(DataFromSource dataFromSource, String outputFile) {
         Document document;
         Element element;
 

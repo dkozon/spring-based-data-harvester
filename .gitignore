@@ -40,3 +40,4 @@ logfile.log*
 *.xml
 *.json
 !harvesterConfig.json
+*.txt

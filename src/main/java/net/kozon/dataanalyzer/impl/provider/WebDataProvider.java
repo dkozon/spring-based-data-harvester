@@ -1,4 +1,4 @@
-package net.kozon.dataanalyzer.impl;
+package net.kozon.dataanalyzer.impl.provider;
 
 import lombok.extern.slf4j.Slf4j;
 import net.kozon.dataanalyzer.interfaces.DataProvider;
