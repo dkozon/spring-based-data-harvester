@@ -39,3 +39,4 @@ modules.xml
 logfile.log*
 *.xml
 *.json
+!harvesterConfig.json
