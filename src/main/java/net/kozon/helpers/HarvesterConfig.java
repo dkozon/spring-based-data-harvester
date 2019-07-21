@@ -1,4 +1,4 @@
-package net.kozon;
+package net.kozon.helpers;
 
 import net.kozon.dataanalyzer.impl.WebDataProvider;
 import net.kozon.dataanalyzer.interfaces.DataProvider;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.io.IOException;
 
 @Configuration
-public class AppConfig {
+public class HarvesterConfig {
 
     @Bean
     public WebDataProvider webDataProvider() {

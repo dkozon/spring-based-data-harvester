@@ -7,6 +7,7 @@ import net.kozon.dataanalyzer.service.DataPresentationOnJSONService;
 import net.kozon.dataanalyzer.service.DataPresentationOnXMLService;
 import net.kozon.dataanalyzer.service.DataPresentationServiceExploitable;
 import net.kozon.helpers.Configuration;
+import net.kozon.helpers.HarvesterConfig;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 public class ConsoleApplication {
     public static void main(String[] args) throws IOException {
-        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(HarvesterConfig.class);
 
         WebDataProvider webDataProvider = context.getBean(WebDataProvider.class);
         webDataProvider.setUrl(Configuration.getInstance().source);
