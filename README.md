@@ -4,7 +4,7 @@ Project is in design and development of modules phase - be patient - it will cha
 
 **DataHarvester** is java utility for getting data from various web pages or Restful services.
 
-##Configuration
+## Configuration
 For harvesting and saving data from web page you need to specify:
 
 - source - URL of web page ready for harvesting data
