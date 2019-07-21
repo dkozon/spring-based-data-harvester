@@ -38,7 +38,6 @@ public class WebDataProviderTest {
 
     @Test
     public void getDocument() throws IOException {
-
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
         log.info(webDataProvider.getDocument().outerHtml());

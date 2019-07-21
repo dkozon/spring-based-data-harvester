@@ -8,7 +8,7 @@ public class DataPresentationOnConsoleService {
 
     public void presentDataBy(DataFromSource dataFromSource) {
         for (String element : dataFromSource.getSelectors()) {
-            log.info(dataFromSource.getSourceName() + " " + element);
+            log.info(String.format("Source name: %s, element for harvesting: %s", dataFromSource.getSourceName(), element));
         }
     }
 }
