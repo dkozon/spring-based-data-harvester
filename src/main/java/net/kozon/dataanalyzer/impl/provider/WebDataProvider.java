@@ -15,10 +15,11 @@ import java.util.List;
 @Component
 public class WebDataProvider implements DataProvider {
 
+    private String url;
+
     public String getUrl() {
         return url;
     }
-    private String url;
 
     public void setUrl(String url) {
         this.url = url;

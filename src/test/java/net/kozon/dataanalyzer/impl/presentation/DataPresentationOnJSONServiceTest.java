@@ -15,7 +15,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 public class DataPresentationOnJSONServiceTest {
 
@@ -32,6 +31,7 @@ public class DataPresentationOnJSONServiceTest {
                         .withHeader("Content-Type", "text/plain")
                         .withBody("<div><p style=\"margin:0;padding:5px 0;\">Złoto 5398.38 PLN / UNCJA</p></div>")));
     }
+
     @Test
     public void saveToFile() throws IOException {
         // when
