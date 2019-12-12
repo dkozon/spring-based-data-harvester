@@ -1,6 +1,12 @@
 {
+
   "source": "http://www.79element.pl",
   "selectors": [
+    "#spot_block_left > div:nth-child(2) > p:nth-child(1)"
+  ],
+
+  "source2": "http://www.79element.pl",
+  "selectors2": [
     "#spot_block_left > div:nth-child(2) > p:nth-child(1)"
   ]
 }
