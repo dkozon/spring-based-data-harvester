@@ -68,7 +68,7 @@ public class WebDataProviderTest {
         webDataProvider.setUrl(TEST_URL);
         //then
         log.info(webDataProvider.prepareSourceName());
-        assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost8100endpoint");
+        assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost_8100_endpoint");
     }
 
     @Test

@@ -14,11 +14,10 @@ import java.util.List;
 
 public class Configuration {
 
-    public String source;
-    public List<String> selectors;
-
     private static final String CONFIG_FILE = "harvesterConfig.json";
     private static Configuration configuration;
+    public String source;
+    public List<String> selectors;
 
     private Configuration() {
     }

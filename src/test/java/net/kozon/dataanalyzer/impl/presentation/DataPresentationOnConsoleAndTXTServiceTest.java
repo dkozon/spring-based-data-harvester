@@ -16,7 +16,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DataPresentationOnConsoleServiceTest {
+public class DataPresentationOnConsoleAndTXTServiceTest {
 
     private static final String TEST_URL = "http://localhost:8200/endpoint";
 
