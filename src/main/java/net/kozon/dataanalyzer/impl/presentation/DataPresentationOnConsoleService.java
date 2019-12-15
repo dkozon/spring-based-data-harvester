@@ -1,33 +1,33 @@
 package net.kozon.dataanalyzer.impl.presentation;
 
 import lombok.extern.slf4j.Slf4j;
+import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import net.kozon.dataanalyzer.interfaces.DataPresentation;
-import net.kozon.dataanalyzer.pojo.DataFromSource;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
 
 @Slf4j
 public class DataPresentationOnConsoleService implements DataPresentation {
 
     @Override
-    public boolean saveToFile(DataFromSource dataFromSource, String outputFile) {
-        try (FileWriter writer = new FileWriter(outputFile); BufferedWriter bw = new BufferedWriter(writer)) {
-            for (String element : dataFromSource.getSelectors()) {
-                bw.write(String.format("Source name: %s, element for harvesting: %s", dataFromSource.getSourceName(), element));
-            }
+    public boolean saveToFile(DataFromWebSource dataFromWebSource, String outputFile) {
+        try {
+            Files.write(Paths.get(outputFile), Collections.singleton(
+                    String.format("Source name: %s, element for harvesting: %s",
+                            dataFromWebSource.getSourceName(),
+                            dataFromWebSource.getSelectors())));
         } catch (IOException e) {
             log.error("IOException: %s%n", e);
             return false;
         }
-        return presentDataOnConsole(dataFromSource);
+        return presentDataOnConsole(dataFromWebSource);
     }
 
-    private boolean presentDataOnConsole(DataFromSource dataFromSource) {
-        for (String element : dataFromSource.getSelectors()) {
-            log.info(String.format("Source name: %s, element for harvesting: %s", dataFromSource.getSourceName(), element));
-        }
+    private boolean presentDataOnConsole(DataFromWebSource dataFromWebSource) {
+        log.info(String.format("Source name: %s, element for harvesting: %s", dataFromWebSource.getSourceName(), dataFromWebSource.getSelectors()));
         return true;
     }
 }

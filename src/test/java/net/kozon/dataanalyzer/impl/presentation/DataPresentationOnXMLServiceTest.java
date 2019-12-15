@@ -2,7 +2,7 @@ package net.kozon.dataanalyzer.impl.presentation;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
-import net.kozon.dataanalyzer.pojo.DataFromSource;
+import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -42,10 +42,10 @@ public class DataPresentationOnXMLServiceTest {
         List<String> list = new ArrayList<>();
         list.add(webDataProvider.extractDetailedData("p:nth-child(1)"));
 
-        DataFromSource dataFromSource = new DataFromSource(webDataProvider.prepareSourceName(), list);
+        DataFromWebSource dataFromWebSource = new DataFromWebSource(webDataProvider.prepareSourceName(), list);
 
         // then
         assertThat(webDataProvider.getUrl()).isEqualTo(TEST_URL);
-        assertThat(dataPresentationOnConsoleService.saveToFile(dataFromSource, "test.xml")).isTrue();
+        assertThat(dataPresentationOnConsoleService.saveToFile(dataFromWebSource, "test.xml")).isTrue();
     }
 }

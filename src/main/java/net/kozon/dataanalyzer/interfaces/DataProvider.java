@@ -12,5 +12,5 @@ public interface DataProvider {
 
     String prepareSourceName();
 
-    List<String> prepareListFromData() throws IOException;
+    List<String> prepareListFromData(List<String> selectors) throws IOException;
 }

@@ -2,11 +2,13 @@ package net.kozon.dataanalyzer.impl.provider;
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import lombok.extern.slf4j.Slf4j;
+import net.kozon.helpers.Configuration;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -67,5 +69,20 @@ public class WebDataProviderTest {
         //then
         log.info(webDataProvider.prepareSourceName());
         assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost8100endpoint");
+    }
+
+    @Test
+    public void prepareSourceName() {
+        WebDataProvider webDataProvider = new WebDataProvider();
+        webDataProvider.setUrl(TEST_URL);
+        assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost_8100_endpoint");
+    }
+
+    @Test
+    public void prepareListFromData() throws IOException, URISyntaxException {
+        WebDataProvider webDataProvider = new WebDataProvider();
+        webDataProvider.setUrl(TEST_URL);
+        assertThat(webDataProvider.prepareListFromData(Configuration.getInstance().selectors)).contains("Złoto 5398.38 PLN / UNCJA");
+
     }
 }

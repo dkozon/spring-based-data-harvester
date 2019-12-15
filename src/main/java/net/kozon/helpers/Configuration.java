@@ -5,6 +5,8 @@ import com.google.gson.stream.JsonReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,15 +17,29 @@ public class Configuration {
     public String source;
     public List<String> selectors;
 
+    private static final String CONFIG_FILE = "harvesterConfig.json";
+    private static Configuration configuration;
+
     private Configuration() {
     }
 
-    public static Configuration getInstance() throws IOException {
-        Path path = Paths.get("src\\main\\resources\\harvesterConfig.json");
-        BufferedReader bufferedReader = Files.newBufferedReader(path);
+    public static Configuration getInstance() throws IOException, URISyntaxException {
+        BufferedReader bufferedReader = Files.newBufferedReader(getPath());
         JsonReader jsonReader = new JsonReader(bufferedReader);
-        Gson gson = new Gson();
-        return gson.fromJson(jsonReader, Configuration.class);
+        if (configuration == null) {
+            synchronized (Configuration.class) {
+                if (configuration == null) {
+                    configuration = new Gson().fromJson(jsonReader, Configuration.class);
+                }
+            }
+        }
+        return configuration;
+    }
+
+    private static Path getPath() throws URISyntaxException {
+        URI uri = ClassLoader.getSystemResource(CONFIG_FILE).toURI();
+        String mainPath = Paths.get(uri).toString();
+        return Paths.get(mainPath);
     }
 
 }

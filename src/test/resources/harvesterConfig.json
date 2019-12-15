@@ -1,0 +1,7 @@
+{
+
+  "source": "http://localhost:8100/endpoint",
+  "selectors": [
+    "div > p"
+  ]
+}

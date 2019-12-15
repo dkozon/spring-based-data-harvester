@@ -2,7 +2,7 @@ package net.kozon.dataanalyzer.impl.presentation;
 
 import lombok.extern.slf4j.Slf4j;
 import net.kozon.dataanalyzer.interfaces.DataPresentation;
-import net.kozon.dataanalyzer.pojo.DataFromSource;
+import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -22,7 +22,7 @@ import java.io.IOException;
 public class DataPresentationOnXMLService implements DataPresentation {
 
     @Override
-    public boolean saveToFile(DataFromSource dataFromSource, String outputFile) {
+    public boolean saveToFile(DataFromWebSource dataFromWebSource, String outputFile) {
         Document document;
         Element element;
 
@@ -31,16 +31,16 @@ public class DataPresentationOnXMLService implements DataPresentation {
             DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
             document = documentBuilder.newDocument();
 
-            log.info(dataFromSource.getSourceName());
-            Element rootEle = document.createElement(dataFromSource.getSourceName());
+            log.info(dataFromWebSource.getSourceName());
+            Element rootElement = document.createElement(dataFromWebSource.getSourceName());
 
-            for (String entry : dataFromSource.getSelectors()) {
+            for (String entry : dataFromWebSource.getSelectors()) {
                 element = document.createElement("entity");
                 element.appendChild(document.createTextNode(entry));
-                rootEle.appendChild(element);
+                rootElement.appendChild(element);
             }
 
-            document.appendChild(rootEle);
+            document.appendChild(rootElement);
 
             try {
                 Transformer transformer = TransformerFactory.newInstance().newTransformer();

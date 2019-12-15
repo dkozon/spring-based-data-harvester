@@ -1,11 +1,11 @@
 package net.kozon.dataanalyzer.interfaces;
 
-import net.kozon.dataanalyzer.pojo.DataFromSource;
+import net.kozon.dataanalyzer.dto.DataFromWebSource;
 
 import java.io.IOException;
 
 public interface DataPresentation {
 
-    boolean saveToFile(DataFromSource dataFromSource, String outputFile) throws IOException;
+    boolean saveToFile(DataFromWebSource dataFromWebSource, String outputFile) throws IOException;
 
 }
