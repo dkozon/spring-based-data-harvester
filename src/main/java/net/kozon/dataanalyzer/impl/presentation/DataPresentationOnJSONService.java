@@ -15,7 +15,6 @@ public class DataPresentationOnJSONService implements DataPresentation {
     @Override
     public boolean saveToFile(DataFromWebSource dataFromWebSource, String outputFile) {
         JSONObject root = new JSONObject();
-
         root.put("page", dataFromWebSource.getSourceName());
         JSONObject element = new JSONObject();
         for (String selector : dataFromWebSource.getSelectors()) {

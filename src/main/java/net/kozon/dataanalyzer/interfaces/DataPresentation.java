@@ -4,6 +4,7 @@ import net.kozon.dataanalyzer.dto.DataFromWebSource;
 
 import java.io.IOException;
 
+@FunctionalInterface
 public interface DataPresentation {
 
     boolean saveToFile(DataFromWebSource dataFromWebSource, String outputFile) throws IOException;

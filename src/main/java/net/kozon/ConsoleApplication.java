@@ -12,7 +12,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ConsoleApplication {
     public static void main(String[] args) throws IOException, URISyntaxException {
@@ -21,16 +22,19 @@ public class ConsoleApplication {
         WebDataProvider webDataProvider = context.getBean(WebDataProvider.class);
         webDataProvider.setUrl(Configuration.getInstance().source);
 
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+
         DataFromWebSource dataFromWebSource = new DataFromWebSource(webDataProvider.prepareSourceName(), webDataProvider.prepareListFromData(Configuration.getInstance().selectors));
 
         DataPresentationOnConsoleService dataPresentationOnConsoleService = context.getBean(DataPresentationOnConsoleService.class);
-        dataPresentationOnConsoleService.saveToFile(dataFromWebSource, UUID.randomUUID() + ".txt");
+        dataPresentationOnConsoleService.saveToFile(dataFromWebSource, dateFormat.format(date) + ".txt");
 
         DataPresentationOnXMLService dataPresentationOnXMLService = context.getBean(DataPresentationOnXMLService.class);
-        dataPresentationOnXMLService.saveToFile(dataFromWebSource, UUID.randomUUID() + ".xml");
+        dataPresentationOnXMLService.saveToFile(dataFromWebSource, dateFormat.format(date) + ".xml");
 
         DataPresentationOnJSONService dataPresentationOnJSONService = context.getBean(DataPresentationOnJSONService.class);
-        dataPresentationOnJSONService.saveToFile(dataFromWebSource, UUID.randomUUID() + ".json");
+        dataPresentationOnJSONService.saveToFile(dataFromWebSource, dateFormat.format(date) + ".json");
 
         DataPresentationServiceExploitable dataPresentationServiceExploitable = context.getBean(DataPresentationServiceExploitable.class);
         dataPresentationServiceExploitable.saveToFile(dataFromWebSource, "exploitResult.xml");

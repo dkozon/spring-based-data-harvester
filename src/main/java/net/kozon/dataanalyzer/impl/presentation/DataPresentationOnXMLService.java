@@ -27,34 +27,36 @@ public class DataPresentationOnXMLService implements DataPresentation {
         Element element;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+        DocumentBuilder documentBuilder;
         try {
-            DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
-            document = documentBuilder.newDocument();
+            documentBuilder = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            log.info("UsersXML: Error trying to instantiate DocumentBuilder.\n Log: %s", e);
+            return false;
+        }
+        document = documentBuilder.newDocument();
 
-            log.info(dataFromWebSource.getSourceName());
-            Element rootElement = document.createElement(dataFromWebSource.getSourceName());
+        log.info(dataFromWebSource.getSourceName());
+        Element rootElement = document.createElement(dataFromWebSource.getSourceName());
 
-            for (String entry : dataFromWebSource.getSelectors()) {
-                element = document.createElement("entity");
-                element.appendChild(document.createTextNode(entry));
-                rootElement.appendChild(element);
-            }
+        for (String entry : dataFromWebSource.getSelectors()) {
+            element = document.createElement("entity");
+            element.appendChild(document.createTextNode(entry));
+            rootElement.appendChild(element);
+        }
 
-            document.appendChild(rootElement);
+        document.appendChild(rootElement);
 
-            try {
-                Transformer transformer = TransformerFactory.newInstance().newTransformer();
-                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-                transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-                transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-                transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-                transformer.transform(new DOMSource(document), new StreamResult(new FileOutputStream(outputFile)));
-            } catch (TransformerException | IOException exception) {
-                log.info(exception.getMessage());
-                return false;
-            }
-        } catch (ParserConfigurationException exception) {
-            log.info("UsersXML: Error trying to instantiate DocumentBuilder.\n Log: %s", exception);
+        try {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.transform(new DOMSource(document), new StreamResult(new FileOutputStream(outputFile)));
+        } catch (TransformerException | IOException exception) {
+            log.info(exception.getMessage());
             return false;
         }
         return true;
