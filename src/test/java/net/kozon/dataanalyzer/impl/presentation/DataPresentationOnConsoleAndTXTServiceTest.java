@@ -1,11 +1,11 @@
 package net.kozon.dataanalyzer.impl.presentation;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,21 +19,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DataPresentationOnConsoleAndTXTServiceTest {
 
     private static final String TEST_URL = "http://localhost:8200/endpoint";
+    private static WireMockServer wireMockServer;
 
-    @Rule
-    public static WireMockRule service = new WireMockRule(8200);
-
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         // given
-        service.stubFor(get(urlEqualTo("/endpoint"))
+        wireMockServer = new WireMockServer(8200);
+        wireMockServer.start();
+        wireMockServer.stubFor(get(urlEqualTo("/endpoint"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "text/plain")
                         .withBody("<div><p style=\"margin:0;padding:5px 0;\">Złoto 5398.38 PLN / UNCJA</p></div>")));
     }
 
     @Test
-    public void saveToFile() throws IOException {
+    void saveToFile() throws IOException {
         // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);

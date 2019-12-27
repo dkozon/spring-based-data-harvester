@@ -1,11 +1,10 @@
 package net.kozon.dataanalyzer.impl.presentation;
 
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.github.tomakehurst.wiremock.WireMockServer;
 import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,15 +17,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DataPresentationOnXMLServiceTest {
 
-    private static final String TEST_URL = "http://localhost:8100/endpoint";
+    private static final String TEST_URL = "http://localhost:8102/endpoint";
 
-    @Rule
-    public static WireMockRule service = new WireMockRule(8100);
+    private static WireMockServer wireMockServer;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         // given
-        service.stubFor(get(urlEqualTo("/endpoint"))
+        wireMockServer = new WireMockServer(8102);
+        wireMockServer.start();
+        wireMockServer.stubFor(get(urlEqualTo("/endpoint"))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "text/plain")
                         .withBody("<div><p style=\"margin:0;padding:5px 0;\">Złoto 5398.38 PLN / UNCJA</p></div>")));
