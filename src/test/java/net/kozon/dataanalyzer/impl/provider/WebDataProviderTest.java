@@ -15,8 +15,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-//@ExtendWith(MockitoExtension.class)
-//@RunWith(JUnitPlatform.class)
 public class WebDataProviderTest {
 
     private static final String TEST_URL = "http://localhost:8100/endpoint";
@@ -75,8 +73,10 @@ public class WebDataProviderTest {
 
     @Test
     void prepareSourceName() {
+        // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
+        //then
         assertThat(webDataProvider.prepareSourceName()).isEqualTo("page_localhost_8100_endpoint");
     }
 
