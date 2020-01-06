@@ -1,7 +1,6 @@
 package net.kozon.dataanalyzer.impl.presentation;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import net.kozon.dataanalyzer.dto.DataFromWebSource;
 import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
 import org.junit.jupiter.api.BeforeAll;
