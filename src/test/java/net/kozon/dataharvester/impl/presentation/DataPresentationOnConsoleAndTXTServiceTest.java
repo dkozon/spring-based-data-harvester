@@ -1,8 +1,8 @@
-package net.kozon.dataanalyzer.impl.presentation;
+package net.kozon.dataharvester.impl.presentation;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import net.kozon.dataanalyzer.dto.DataFromWebSource;
-import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
+import net.kozon.dataharvester.dto.DataFromWebSource;
+import net.kozon.dataharvester.impl.provider.WebDataProvider;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,16 +15,15 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DataPresentationOnJSONServiceTest {
+public class DataPresentationOnConsoleAndTXTServiceTest {
 
-    private static final String TEST_URL = "http://localhost:8101/endpoint";
-
+    private static final String TEST_URL = "http://localhost:8200/endpoint";
     private static WireMockServer wireMockServer;
 
     @BeforeAll
     public static void setUp() {
         // given
-        wireMockServer = new WireMockServer(8101);
+        wireMockServer = new WireMockServer(8200);
         wireMockServer.start();
         wireMockServer.stubFor(get(urlEqualTo("/endpoint"))
                 .willReturn(aResponse()
@@ -37,7 +36,7 @@ public class DataPresentationOnJSONServiceTest {
         // when
         WebDataProvider webDataProvider = new WebDataProvider();
         webDataProvider.setUrl(TEST_URL);
-        DataPresentationOnJSONService dataPresentationOnConsoleService = new DataPresentationOnJSONService();
+        DataPresentationOnConsoleService dataPresentationOnConsoleService = new DataPresentationOnConsoleService();
 
         List<String> list = new ArrayList<>();
         list.add(webDataProvider.extractDetailedData("p:nth-child(1)"));
@@ -46,6 +45,6 @@ public class DataPresentationOnJSONServiceTest {
 
         // then
         assertThat(webDataProvider.getUrl()).isEqualTo(TEST_URL);
-        assertThat(dataPresentationOnConsoleService.saveToFile(dataFromWebSource, "test.json")).isTrue();
+        assertThat(dataPresentationOnConsoleService.saveToFile(dataFromWebSource, "test.txt")).isTrue();
     }
 }

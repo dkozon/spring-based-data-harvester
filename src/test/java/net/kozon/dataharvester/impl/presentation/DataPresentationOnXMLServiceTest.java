@@ -1,8 +1,8 @@
-package net.kozon.dataanalyzer.impl.presentation;
+package net.kozon.dataharvester.impl.presentation;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import net.kozon.dataanalyzer.dto.DataFromWebSource;
-import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
+import net.kozon.dataharvester.dto.DataFromWebSource;
+import net.kozon.dataharvester.impl.provider.WebDataProvider;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

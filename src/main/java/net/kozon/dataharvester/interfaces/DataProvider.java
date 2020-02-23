@@ -1,4 +1,4 @@
-package net.kozon.dataanalyzer.interfaces;
+package net.kozon.dataharvester.interfaces;
 
 import org.jsoup.nodes.Document;
 

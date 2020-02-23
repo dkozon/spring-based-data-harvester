@@ -1,7 +1,7 @@
-package net.kozon.utils;
+package net.kozon.dataanalyzer;
 
 import lombok.extern.slf4j.Slf4j;
-import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
+import net.kozon.dataharvester.impl.provider.WebDataProvider;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

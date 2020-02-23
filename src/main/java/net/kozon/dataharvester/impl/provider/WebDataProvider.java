@@ -1,9 +1,9 @@
-package net.kozon.dataanalyzer.impl.provider;
+package net.kozon.dataharvester.impl.provider;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import net.kozon.dataanalyzer.interfaces.DataProvider;
+import net.kozon.dataharvester.interfaces.DataProvider;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Component;

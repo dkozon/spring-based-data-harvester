@@ -1,8 +1,8 @@
-package net.kozon.dataanalyzer.impl.presentation;
+package net.kozon.dataharvester.impl.presentation;
 
 import lombok.extern.slf4j.Slf4j;
-import net.kozon.dataanalyzer.dto.DataFromWebSource;
-import net.kozon.dataanalyzer.interfaces.DataPresentation;
+import net.kozon.dataharvester.dto.DataFromWebSource;
+import net.kozon.dataharvester.interfaces.DataPresentation;
 
 import java.io.IOException;
 import java.nio.file.Files;

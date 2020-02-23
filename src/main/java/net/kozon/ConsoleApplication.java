@@ -1,13 +1,13 @@
 package net.kozon;
 
-import net.kozon.dataanalyzer.dto.DataFromWebSource;
-import net.kozon.dataanalyzer.impl.presentation.DataPresentationOnConsoleService;
-import net.kozon.dataanalyzer.impl.presentation.DataPresentationOnJSONService;
-import net.kozon.dataanalyzer.impl.presentation.DataPresentationOnXMLService;
-import net.kozon.dataanalyzer.impl.presentation.DataPresentationServiceExploitable;
-import net.kozon.dataanalyzer.impl.provider.WebDataProvider;
+import net.kozon.dataharvester.dto.DataFromWebSource;
+import net.kozon.dataharvester.impl.presentation.DataPresentationOnConsoleService;
+import net.kozon.dataharvester.impl.presentation.DataPresentationOnJSONService;
+import net.kozon.dataharvester.impl.presentation.DataPresentationOnXMLService;
+import net.kozon.dataharvester.impl.presentation.DataPresentationServiceExploitable;
+import net.kozon.dataharvester.impl.provider.WebDataProvider;
 import net.kozon.helpers.Configuration;
-import net.kozon.utils.WebXPathGenerator;
+import net.kozon.dataanalyzer.WebXPathGenerator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

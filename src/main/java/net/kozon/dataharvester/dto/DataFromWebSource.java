@@ -1,4 +1,4 @@
-package net.kozon.dataanalyzer.dto;
+package net.kozon.dataharvester.dto;
 
 import lombok.Value;
 

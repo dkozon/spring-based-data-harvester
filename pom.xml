@@ -6,6 +6,7 @@
 
     <groupId>net.kozon.</groupId>
     <artifactId>spring-based-data-harvester</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <build>
@@ -45,6 +46,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>xpath-manipulator</module>
+    </modules>
 
     <dependencies>
         <dependency>

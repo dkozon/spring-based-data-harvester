@@ -1,6 +1,6 @@
-package net.kozon.dataanalyzer.interfaces;
+package net.kozon.dataharvester.interfaces;
 
-import net.kozon.dataanalyzer.dto.DataFromWebSource;
+import net.kozon.dataharvester.dto.DataFromWebSource;
 
 import java.io.IOException;
 
